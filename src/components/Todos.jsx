@@ -3,6 +3,9 @@ import TodoItem from './TodoItem';
 import PropTypes from 'prop-types';
 
 export default class Todos extends Component {
+  componentWillUnmount = () => {
+    console.log('Todos unmounted');
+  };
   render() {
     return this.props.todos.map((todo) => (
       <TodoItem

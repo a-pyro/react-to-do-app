@@ -20,10 +20,20 @@ export default class TodoItem extends Component {
     return (
       <div style={this.getStyle()}>
         <p>
-          <input
-            onChange={() => this.props.markComplete(this.props.todo)}
-            type='checkbox'
-          />{' '}
+          {this.props.todo.completed && (
+            <input
+              checked
+              onChange={() => this.props.markComplete(this.props.todo)}
+              type='checkbox'
+            />
+          )}
+          {!this.props.todo.completed && (
+            <input
+              onChange={() => this.props.markComplete(this.props.todo)}
+              type='checkbox'
+              name='check'
+            />
+          )}{' '}
           {this.props.todo.title}
         </p>
         <div>

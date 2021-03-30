@@ -2,34 +2,26 @@ import React, { Component } from 'react';
 import './App.css';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
+import Search from './components/Search';
 import { v4 as uuidv4 } from 'uuid';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class App extends Component {
   state = {
-    todos: [
-      { id: uuidv4(), title: 'Diventare master react', completed: false },
-      { id: uuidv4(), title: 'lavare morty', completed: false },
-      { id: uuidv4(), title: 'portare via la spazza', completed: false },
-    ],
+    todos: [],
     query: '',
   };
 
-  componentDidMount = () => {};
+  componentDidMount = () => {
+    const storedTodos = JSON.parse(localStorage.getItem('todos')) ?? [];
+    this.setState({ todos: storedTodos });
+  };
 
+  componentDidUpdate = (prevState) => {
+    localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    if (this.state.todos.length === 0) localStorage.clear();
+  };
   markComplete = ({ id }) => {
-    console.log(id);
-    // this.setState({
-    //   todos: this.state.todos.reduce((acc, cv) => {
-    //     if (cv.id === id) {
-    //       cv.completed = !cv.completed;
-    //     }
-    //     acc.push(cv);
-    //     return acc;
-    //   }, []),
-    // });
-
-    // or
     this.setState({
       todos: this.state.todos.map((todo) => {
         if (todo.id === id) todo.completed = !todo.completed;
@@ -60,6 +52,7 @@ export default class App extends Component {
     // console.log(this.state.todos);
     return this.state.todos.length > 0 ? (
       <div className='app'>
+        <Search />
         <Todos
           deleteTodo={this.deleteTodo}
           markComplete={this.markComplete}

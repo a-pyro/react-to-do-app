@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 export default class AddTodo extends Component {
   handleSumbit = (e) => {
     e.preventDefault();
-    if (this.props.value === '') return alert('insert todo');
+    if (this.props.value === '') return;
     this.props.addTodo(this.props.value);
   };
 
