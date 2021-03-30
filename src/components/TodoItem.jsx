@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { MdDeleteForever } from '@react-icons/all-files/fa/MdDeleteForever';
 
 export default class TodoItem extends Component {
   getStyle = () => {
@@ -20,6 +21,9 @@ export default class TodoItem extends Component {
             type='checkbox'
           />{' '}
           {this.props.todo.title}
+          <MdDeleteForever
+            onClick={() => this.props.deleteTodo(this.props.todo)}
+          />
         </p>
       </div>
     );

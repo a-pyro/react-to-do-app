@@ -11,16 +11,30 @@ export default class App extends Component {
     ],
   };
 
-  markComplete = (todo) => {
-    console.log(todo.id);
+  markComplete = ({ id }) => {
+    console.log(id);
+    // this.setState({
+    //   todos: this.state.todos.reduce((acc, cv) => {
+    //     if (cv.id === id) {
+    //       cv.completed = !cv.completed;
+    //     }
+    //     acc.push(cv);
+    //     return acc;
+    //   }, []),
+    // });
+
+    // or
     this.setState({
-      todos: this.state.todos.reduce((acc, cv) => {
-        if (cv.id === todo.id) {
-          cv.completed = !cv.completed;
-        }
-        acc.push(cv);
-        return acc;
-      }, []),
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) todo.completed = !todo.completed;
+        return todo;
+      }),
+    });
+  };
+
+  deleteTodo = ({ id }) => {
+    this.setState({
+      todos: this.setState.todos.filter((todo) => todo.id !== id),
     });
   };
   render() {
