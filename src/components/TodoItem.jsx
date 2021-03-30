@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-// import { MdDeleteForever } from '@react-icons/all-files/fa/MdDeleteForever';
+
 import { MdDeleteForever } from 'react-icons/md';
+import { ListGroup } from 'react-bootstrap';
 
 export default class TodoItem extends Component {
   getStyle = () => {
@@ -45,7 +45,3 @@ export default class TodoItem extends Component {
     );
   }
 }
-
-TodoItem.propTypes = {
-  todo: PropTypes.object.isRequired,
-};

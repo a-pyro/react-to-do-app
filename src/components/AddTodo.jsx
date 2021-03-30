@@ -11,7 +11,7 @@ export default class AddTodo extends Component {
 
   render() {
     return (
-      <div style={{ height: '20px' }}>
+      <div>
         <Form onSubmit={this.handleSumbit}>
           <InputGroup className='mb-3'>
             <FormControl

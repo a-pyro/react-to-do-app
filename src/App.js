@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
@@ -35,6 +36,7 @@ export default class App extends Component {
       todos: this.state.todos.filter((todo) => todo.id !== id),
     });
   };
+
   onChange = (e) => {
     this.setState({ query: e.target.value });
   };
@@ -49,28 +51,18 @@ export default class App extends Component {
   };
 
   render() {
-    // console.log(this.state.todos);
-    return this.state.todos.length > 0 ? (
+    return (
       <div className='app'>
-        <Search />
+        {this.state.todos.length > 0 && <Search />}
+        <AddTodo
+          addTodo={this.addTodo}
+          onChange={this.onChange}
+          value={this.state.query}
+        />
         <Todos
           deleteTodo={this.deleteTodo}
           markComplete={this.markComplete}
           todos={this.state.todos}
-        />
-        <AddTodo
-          addTodo={this.addTodo}
-          onChange={this.onChange}
-          value={this.state.query}
-        />
-      </div>
-    ) : (
-      <div className='app'>
-        <h1>No ToDos!</h1>
-        <AddTodo
-          addTodo={this.addTodo}
-          onChange={this.onChange}
-          value={this.state.query}
         />
       </div>
     );
