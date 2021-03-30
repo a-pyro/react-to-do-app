@@ -3,6 +3,7 @@ import './App.css';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 import { v4 as uuidv4 } from 'uuid';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class App extends Component {
   state = {
