@@ -6,6 +6,7 @@ export default class Todos extends Component {
   render() {
     return this.props.todos.map((todo) => (
       <TodoItem
+        deleteTodo={this.props.deleteTodo}
         markComplete={this.props.markComplete}
         key={todo.id}
         todo={todo}

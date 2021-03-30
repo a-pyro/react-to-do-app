@@ -34,14 +34,18 @@ export default class App extends Component {
 
   deleteTodo = ({ id }) => {
     this.setState({
-      todos: this.setState.todos.filter((todo) => todo.id !== id),
+      todos: this.state.todos.filter((todo) => todo.id !== id),
     });
   };
   render() {
     // console.log(this.state.todos);
     return (
       <div>
-        <Todos markComplete={this.markComplete} todos={this.state.todos} />
+        <Todos
+          deleteTodo={this.deleteTodo}
+          markComplete={this.markComplete}
+          todos={this.state.todos}
+        />
       </div>
     );
   }

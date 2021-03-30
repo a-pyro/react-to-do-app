@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { MdDeleteForever } from '@react-icons/all-files/fa/MdDeleteForever';
+// import { MdDeleteForever } from '@react-icons/all-files/fa/MdDeleteForever';
+import { MdDeleteForever } from 'react-icons/md';
 
 export default class TodoItem extends Component {
   getStyle = () => {
     return {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
       background: '#f4f4f4',
       padding: '10px',
       borderBottom: '1px solid #ccc',
@@ -21,10 +25,12 @@ export default class TodoItem extends Component {
             type='checkbox'
           />{' '}
           {this.props.todo.title}
+        </p>
+        <div>
           <MdDeleteForever
             onClick={() => this.props.deleteTodo(this.props.todo)}
           />
-        </p>
+        </div>
       </div>
     );
   }
