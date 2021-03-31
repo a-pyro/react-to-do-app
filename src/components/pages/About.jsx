@@ -8,5 +8,5 @@ const About = () => {
     </>
   );
 };
-
+// adding a little comment
 export default About;
